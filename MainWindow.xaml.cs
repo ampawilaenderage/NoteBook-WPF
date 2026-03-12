@@ -7,6 +7,7 @@ namespace Notizbuch
 {
     public partial class MainWindow : Window
     {
+      // test comment
         private Notiz _AktuelleNotiz;
         public Notiz AktuelleNotiz
         {
