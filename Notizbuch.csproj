@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Bilder\Notizbuch.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Bilder\Notizbuch.ico" />
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,7 @@
 ﻿using Notizbuch.Models;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Notizbuch
 {
@@ -61,11 +62,14 @@ namespace Notizbuch
         {
             listeAktualisieren();
             btnNeu.IsEnabled = (Kategorie)cbxKategorie.SelectedItem != Kategorie.Alle;
+
+            // Update TextBlock color dynamically
+            Resources["rscFarbe"] = btnNeu.IsEnabled ? Brushes.DarkGray : Brushes.Red;
         }
 
         private void lbxNotizen_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            AktuelleNotiz = lbxNotizen.SelectedItem as Notiz;
+            AktuelleNotiz = (Notiz)lbxNotizen.SelectedItem;
             btnLöschen.IsEnabled = lbxNotizen.SelectedIndex > -1;
         }
 

@@ -13,6 +13,7 @@ C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\obj\Debug\net8.0-windows
 C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\obj\Debug\net8.0-windows\Notizbuch.AssemblyInfoInputs.cache
 C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\obj\Debug\net8.0-windows\Notizbuch.AssemblyInfo.cs
 C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\obj\Debug\net8.0-windows\Notizbuch.csproj.CoreCompileInputs.cache
+C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\obj\Debug\net8.0-windows\Notizbuch.sourcelink.json
 C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\obj\Debug\net8.0-windows\Notizbuch.dll
 C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\obj\Debug\net8.0-windows\refint\Notizbuch.dll
 C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\obj\Debug\net8.0-windows\Notizbuch.pdb
