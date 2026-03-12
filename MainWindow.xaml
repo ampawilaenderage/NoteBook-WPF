@@ -3,85 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Notizbuch"
         xmlns:models="clr-namespace:Notizbuch.Models"
-        Title="Notizbuch" MinWidth="600" MinHeight="400"
+        Title="Notizbuch"
+        MinWidth="600"
+        MinHeight="400"
         Icon="Bilder/Notizbuch.ico">
 
-    <Window.Resources>
-        <!-- Logical Resources -->
-        <SolidColorBrush x:Key="rscFarbe" Color="LightYellow"/>
-
-        <!-- Button Styles -->
-        <Style TargetType="Button" x:Key="styButton">
-            <Setter Property="Width" Value="80"/>
-            <Setter Property="Height" Value="24"/>
-            <Setter Property="Margin" Value="10,0"/>
-            <Setter Property="Background" Value="LightBlue"/>
-        </Style>
-        <Style TargetType="Button" x:Key="styButtonDisabled" BasedOn="{StaticResource styButton}">
-            <Setter Property="IsEnabled" Value="False"/>
-        </Style>
-
-        <!-- ComboBox Style with Trigger -->
-        <Style TargetType="ComboBox" x:Key="styComboBox">
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Style.Triggers>
-                <Trigger Property="SelectedItem" Value="{x:Static models:Kategorie.Alle}">
-                    <Setter Property="FontWeight" Value="Normal"/>
-                    <Setter Property="Foreground" Value="Red"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!-- Button ControlTemplate -->
-        <ControlTemplate TargetType="Button" x:Key="ctpButton">
-            <Grid>
-                <Rectangle x:Name="rctButton" Stroke="DarkGray" StrokeThickness="2" RadiusX="15" RadiusY="10">
-                    <Rectangle.Fill>
-                        <RadialGradientBrush GradientOrigin="0.2,0.3" RadiusX="0.7" RadiusY="0.9">
-                            <GradientStop Offset="0.1" Color="LightYellow"/>
-                            <GradientStop Offset="0.7" Color="LightBlue"/>
-                        </RadialGradientBrush>
-                    </Rectangle.Fill>
-                </Rectangle>
-                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Grid>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter TargetName="rctButton" Property="Fill">
-                        <Setter.Value>
-                            <RadialGradientBrush GradientOrigin="0.2,0.3" RadiusX="0.7" RadiusY="0.9">
-                                <GradientStop Offset="0.1" Color="LightGray"/>
-                                <GradientStop Offset="0.7" Color="DarkGray"/>
-                            </RadialGradientBrush>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter TargetName="rctButton" Property="Fill">
-                        <Setter.Value>
-                            <RadialGradientBrush GradientOrigin="0.2,0.3" RadiusX="0.7" RadiusY="0.9">
-                                <GradientStop Offset="0.1" Color="LightYellow"/>
-                                <GradientStop Offset="0.7" Color="SteelBlue"/>
-                            </RadialGradientBrush>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter TargetName="rctButton" Property="Fill">
-                        <Setter.Value>
-                            <RadialGradientBrush GradientOrigin="0.2,0.3" RadiusX="0.7" RadiusY="0.9">
-                                <GradientStop Offset="0.1" Color="LightYellow"/>
-                                <GradientStop Offset="0.7" Color="Blue"/>
-                            </RadialGradientBrush>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-    </Window.Resources>
-
     <Grid>
-        <!-- ROWS -->
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="30"/>
@@ -89,62 +17,141 @@
             <RowDefinition Height="0.75cm"/>
         </Grid.RowDefinitions>
 
-        <!-- COLUMNS -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40*"/>
             <ColumnDefinition Width="60*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- TOP STACKPANEL -->
-        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Image Source="Bilder/Notizbuch.png" Height="32" Margin="0 0 10 0"/>
-            <TextBlock FontWeight="Bold" FontSize="16" Foreground="Green">
-                Notizen<LineBreak/>
-                <Span FontSize="10" FontWeight="Light"/>
+        <!-- HEADER -->
+
+        <StackPanel Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    Margin="10"
+                    HorizontalAlignment="Center">
+
+            <Image Source="Bilder/Notizbuch.png"
+                   Height="32"
+                   Margin="0 0 10 0"/>
+
+            <TextBlock FontSize="16"
+                       FontWeight="Bold"
+                       Foreground="Green">
+                Notizen
             </TextBlock>
-            <TextBlock Text="Kategorie" FontSize="14" VerticalAlignment="Center" Margin="100 0 5 0" 
-                       Foreground="{DynamicResource rscFarbe}"/>
-            <ComboBox Name="cbxKategorie" Width="200" FontSize="14" SelectedIndex="0"
-                      VerticalContentAlignment="Center" Padding="10 0" SelectionChanged="cbxKategorie_SelectionChanged"
-                      Style="{StaticResource styComboBox}">
-            </ComboBox>
+
+            <TextBlock Text="Kategorie"
+                       FontSize="14"
+                       VerticalAlignment="Center"
+                       Margin="100 0 5 0"/>
+
+            <ComboBox Name="cbxKategorie"
+                      Width="200"
+                      FontSize="14"
+                      SelectedIndex="0"
+                      SelectionChanged="cbxKategorie_SelectionChanged"/>
         </StackPanel>
 
-        <!-- SEARCH DOCKPANEL -->
+        <!-- SEARCH -->
+
         <DockPanel Grid.Row="1">
-            <Label DockPanel.Dock="Left" Content="Suchtext" VerticalAlignment="Center"/>
-            <Button Name="btnSucheAufheben" DockPanel.Dock="Right" Content="X" FontWeight="Bold" Background="Red" Foreground="White" Click="btnSucheAufheben_Click"/>
-            <Button Name="btnSuche" DockPanel.Dock="Right" Content="Suchen" Click="btnSuche_Click"/>
+
+            <Label DockPanel.Dock="Left"
+                   Content="Suchtext"
+                   VerticalAlignment="Center"/>
+
+            <Button Name="btnSucheAufheben"
+                    DockPanel.Dock="Right"
+                    Content="X"
+                    FontWeight="Bold"
+                    Background="Red"
+                    Foreground="White"
+                    Click="btnSuche_Click"/>
+
+            <Button Name="btnSuche"
+                    DockPanel.Dock="Right"
+                    Content="Suchen"
+                    Click="btnSuche_Click"/>
+
             <TextBox Name="tbxSuche"/>
+
         </DockPanel>
 
-        <!-- LISTBOX & TEXTBOX -->
-        <ListBox Name="lbxNotizen" Grid.Row="2" Grid.Column="0" DisplayMemberPath="Inhalt" SelectionChanged="lbxNotizen_SelectionChanged"/>
-        <TextBox Name="tbxNotiz" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Background="{StaticResource rscFarbe}"
-                 IsEnabled="False" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"
-                 FontFamily="Comic Sans MS" TextChanged="tbxNotiz_TextChanged">
-            <TextBox.Style>
-                <Style TargetType="TextBox">
-                    <Style.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsEnabled" Value="True"/>
-                                <Condition Property="Text" Value=""/>
-                            </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" Value="Red"/>
-                            <Setter Property="BorderThickness" Value="5"/>
-                        </MultiTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBox.Style>
-        </TextBox>
+        <!-- LISTBOX -->
 
-        <!-- BUTTONS DOCKPANEL -->
-        <DockPanel Grid.Row="3" Grid.ColumnSpan="2" LastChildFill="False">
-            <Button Name="btnNeu" DockPanel.Dock="Left" Content="Neu" Click="btnNeu_Click" Style="{StaticResource styButtonDisabled}"/>
-            <Button Name="btnLöschen" DockPanel.Dock="Left" Content="Löschen" Click="btnLöschen_Click" Style="{StaticResource styButtonDisabled}"/>
-            <Button Name="btnSpeichern" DockPanel.Dock="Left" Content="Speichern" Click="btnSpeichern_Click" Style="{StaticResource styButtonDisabled}"/>
-            <Button Name="btnBeenden" DockPanel.Dock="Right" Content="Beenden" Click="btnBeenden_Click" Style="{StaticResource styButton}"/>
+        <ListBox Name="lbxNotizen"
+                 Grid.Row="2"
+                 SelectionChanged="lbxNotizen_SelectionChanged"
+                 ItemsSource="{Binding}">
+
+            <ListBox.Resources>
+                <local:DatumKonverter x:Key="Datum"/>
+            </ListBox.Resources>
+
+            <ListBox.ItemTemplate>
+
+                <DataTemplate>
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <TextBlock
+                            Text="{Binding ErstelltAm, Converter={StaticResource Datum}}"
+                            Foreground="{Binding ErstelltAm, Converter={StaticResource Datum}, ConverterParameter=vordergrund}"
+                            Background="{Binding ErstelltAm, Converter={StaticResource Datum}, ConverterParameter=hintergrund}"
+                            FontSize="10"/>
+
+                        <TextBlock Text="{Binding Kategorie}"
+                                   FontSize="10"
+                                   Width="60"
+                                   Margin="5,0"/>
+
+                        <TextBlock Text="{Binding Inhalt}"/>
+
+                    </StackPanel>
+
+                </DataTemplate>
+
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+
+        <!-- NOTE TEXT -->
+
+        <TextBox Name="tbxNotiz"
+                 Grid.Row="1"
+                 Grid.RowSpan="2"
+                 Grid.Column="1"
+                 AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Visible"
+                 FontFamily="Comic Sans MS"
+                 TextChanged="tbxNotiz_TextChanged"/>
+
+        <!-- BUTTONS -->
+
+        <DockPanel Grid.Row="3"
+                   Grid.ColumnSpan="2"
+                   LastChildFill="False">
+
+            <Button Name="btnNeu"
+                    DockPanel.Dock="Left"
+                    Content="Neu"
+                    Click="btnNeu_Click"/>
+
+            <Button Name="btnLöschen"
+                    DockPanel.Dock="Left"
+                    Content="Löschen"
+                    Click="btnLöschen_Click"/>
+
+            <Button Name="btnSpeichern"
+                    DockPanel.Dock="Left"
+                    Content="Speichern"
+                    Click="btnSpeichern_Click"/>
+
+            <Button Name="btnBeenden"
+                    DockPanel.Dock="Right"
+                    Content="Beenden"
+                    Click="btnBeenden_Click"/>
+
         </DockPanel>
 
     </Grid>

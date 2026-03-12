@@ -5,6 +5,7 @@ C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\bin\Debug\net8.0-windows
 C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\bin\Debug\net8.0-windows\Notizbuch.pdb
 C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\obj\Debug\net8.0-windows\MainWindow.g.cs
 C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\obj\Debug\net8.0-windows\Notizbuch_MarkupCompile.cache
 C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\obj\Debug\net8.0-windows\Notizbuch_MarkupCompile.lref
 C:\Users\IBBHome\source\repos\WPFApplications\Notizbuch\obj\Debug\net8.0-windows\MainWindow.baml
